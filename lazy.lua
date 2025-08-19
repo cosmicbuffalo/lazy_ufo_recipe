@@ -25,8 +25,6 @@ return {
     opts = {
       open_fold_hl_timeout = 400,
       enable_get_fold_virt_text = true,
-      enable_next_line_virt_text = false, -- toggle this to enable "next line" virtual text in folds
-      align_suffix = true, -- toggle this to remove the padding between the virtual text and the fold suffix
       preview = {
         win_config = {
           border = { "", "─", "", "", "", "─", "", "" },
@@ -75,7 +73,7 @@ return {
           nextLineLnum = nextLineLnum + 1
           nextLineText = vim.fn.getline(nextLineLnum)
         end
-        local showNextLine = opts.enable_next_line_virt_text
+        local showNextLine = vim.g.lazy_ufo_recipe_enable_next_line_virt_text
           and (isOnlyCurlyBrace or (foldedLines - blankLineCount) <= 2)
         if showNextLine and nextLineText then
           local nextLineVirtText = ctx.get_fold_virt_text(nextLineLnum)
@@ -84,7 +82,7 @@ return {
         end
 
         local lastLineVirtText = ctx.get_fold_virt_text(endLnum)
-        if not opts.enable_next_line_virt_text or foldedLines - blankLineCount > 2 then
+        if not vim.g.lazy_ufo_recipe_enable_next_line_virt_text or foldedLines - blankLineCount > 2 then
           lastLineVirtText[1][1] = lastLineVirtText[1][1]:gsub("^%s*", " ... ")
         else
           lastLineVirtText[1][1] = lastLineVirtText[1][1]:gsub("^%s*", " ")
@@ -112,9 +110,9 @@ return {
           end
           curWidth = curWidth + chunkWidth
         end
-        if opts.align_suffix then
-                    -- stylua: ignore
-                    local rAlignAppndx = math.max(math.min(vim.opt.textwidth["_value"], width - 1) - curWidth - sufWidth, 0)
+        if vim.g.lazy_ufo_recipe_enable_align_suffix then
+          local targetWidth = vim.g.lazy_ufo_recipe_align_suffix_target_width or vim.o.textwidth
+          local rAlignAppndx = math.max(math.min(targetWidth, width - 1) - curWidth - sufWidth, 0)
           suffix = (" "):rep(rAlignAppndx) .. suffix
         end
         table.insert(newVirtText, { suffix, "MoreMsg" })
