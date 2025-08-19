@@ -32,10 +32,10 @@ return {
 ### With `enable_align_suffix = true` (and `align_suffix_target_width = 80`)
 <img width="647" height="102" alt="Screenshot 2025-08-19 at 12 41 05 PM" src="https://github.com/user-attachments/assets/dd961669-4eed-4379-934d-5648b6dee03d" />
 
-## With `enable_next_line_virt_text = true`
+### With `enable_next_line_virt_text = true`
 <img width="446" height="108" alt="Screenshot 2025-08-19 at 12 39 54 PM" src="https://github.com/user-attachments/assets/a0f664f6-4d1e-43d3-b3c2-2b9dfc3ec535" />
 
-## With `enable_next_line_virt_text = true` AND `enable_align_suffix = true`
+### With `enable_next_line_virt_text = true` AND `enable_align_suffix = true`
 <img width="653" height="107" alt="Screenshot 2025-08-19 at 12 40 42 PM" src="https://github.com/user-attachments/assets/9a27258c-f46f-4d07-9fa3-e0c39c15bf42" />
 
 
